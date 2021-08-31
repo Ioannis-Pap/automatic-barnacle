@@ -1,0 +1,91 @@
+/**
+*
+* @author Giannis
+**/
+package calculator;
+
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;
+
+import org.junit.jupiter.api.Test; 
+
+class Calc 
+{
+	
+	private double solution; 
+    private static double x; 
+    private static double y; 
+    private static double r;
+    
+    @Test    
+	public void test() 
+	{
+        solution = 0; 
+        Scanner operands = new Scanner(System.in); 
+        System.out.print("Enter the first operand: ");  
+        x = operands.nextDouble();
+        System.out.print("Enter the second operand: ");  
+        y = operands.nextDouble();
+        
+	    System.out.println("What operation ? ('+', '-', '*', '/', '^')");  
+		System.out.println(" Enter 1 for Addition");
+		System.out.println(" Enter 2 for Subtraction");
+		System.out.println(" Enter 3 for Multiplication");
+		System.out.println(" Enter 4 for Division");
+		System.out.println(" Enter 5 for Power");
+	    
+		Scanner ch = new Scanner(System.in);
+	    System.out.print("Enter operation: ");  
+	    int choice = ch.nextInt();
+		
+	    System.out.println("Enter your result: "); 
+        r = operands.nextDouble();
+        
+	    Calc calc = new Calc();
+	    calc.calc(choice);
+    } 
+
+    public double addition(double x, double y) 
+    { 
+       return x + y; 
+    } 
+    public double subtraction(double x, double y) 
+    { 
+       return x - y; 
+    } 
+    public double multiplication(double x, double y) 
+    {     
+       return x * y; 
+    } 
+    public double division(double x, double y) 
+    { 
+       solution = x / y; 
+       return solution; 
+    } 
+    public double power(double base, double exponent)
+    {
+        solution = Math.pow(base, exponent);
+        return solution;
+    }
+
+    public void calc(int ops)
+    {
+         switch(ops) 
+         {  
+             case(1): 
+               assertEquals(r, addition(x, y));
+               break; 
+             case(2): 
+            	 assertEquals(r, subtraction(x, y));
+               break; 
+             case(3): 
+            	 assertEquals(r, multiplication(x, y));
+               break; 
+             case(4): 
+            	 assertEquals(r, division(x, y));
+               break;
+             case(5):
+            	 assertEquals(r, power(x, y));
+          } 
+    }	   
+}
